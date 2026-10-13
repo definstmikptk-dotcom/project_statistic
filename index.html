@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard Statistik Deskriptif</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-icon">▥</div>
+        <div>
+          <strong>Stat<span>Dash</span></strong>
+          <small>Latihan 1</small>
+        </div>
+      </div>
+      <nav>
+        <a class="active" href="#overview">Overview</a>
+        <a href="#statistics">Statistik</a>
+        <a href="#distribution">Distribusi</a>
+        <a href="#decisions">Analisis & Keputusan</a>
+        <a href="#data">Data</a>
+      </nav>
+      <div class="side-note">
+        <span>DATASET</span>
+        <b>Latihan 1</b>
+        <small id="sideRows">100 observasi</small>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">STATISTIK DESKRIPTIF</p>
+          <h1>Student Data Dashboard</h1>
+          <p class="subtitle">Ringkasan data mahasiswa untuk melihat pola, penyebaran, dan dasar pengambilan keputusan.</p>
+        </div>
+        <div class="status"><i></i> Flask Local</div>
+      </header>
+
+      <section id="overview" class="cards">
+        <div class="card accent-green">
+          <div class="card-label">JUMLAH DATA</div>
+          <div class="big" id="rows">—</div>
+          <div class="muted">observasi mahasiswa</div>
+        </div>
+        <div class="card accent-yellow">
+          <div class="card-label">RATA-RATA NILAI</div>
+          <div class="big" id="examMean">—</div>
+          <div class="muted">Exam Score</div>
+        </div>
+        <div class="card accent-green">
+          <div class="card-label">KEHADIRAN</div>
+          <div class="big" id="attendanceMean">—</div>
+          <div class="muted">rata-rata (%)</div>
+        </div>
+        <div class="card accent-yellow">
+          <div class="card-label">KEPUASAN</div>
+          <div class="big" id="satisfactionMean">—</div>
+          <div class="muted">skala 1–10</div>
+        </div>
+      </section>
+
+      <section class="grid-two">
+        <div class="panel" id="statistics">
+          <div class="panel-head">
+            <div><h2>Statistik Deskriptif</h2><p>Mean, median, standar deviasi, minimum, dan maksimum.</p></div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Variabel</th><th>Mean</th><th>Median</th><th>Std Dev</th><th>Min</th><th>Max</th></tr></thead>
+              <tbody id="statsBody"></tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="panel" id="distribution">
+          <div class="panel-head">
+            <div><h2>Distribusi Exam Score</h2><p>Jumlah mahasiswa pada setiap rentang nilai.</p></div>
+          </div>
+          <div class="chart-box"><canvas id="examChart"></canvas></div>
+        </div>
+      </section>
+
+      <section class="grid-two">
+        <div class="panel">
+          <div class="panel-head">
+            <div><h2>Rata-rata Variabel</h2><p>Perbandingan skala tiap variabel numerik.</p></div>
+          </div>
+          <div class="chart-box"><canvas id="meanChart"></canvas></div>
+        </div>
+        <div class="panel">
+          <div class="panel-head">
+            <div><h2>Komposisi Gender</h2><p>Distribusi responden berdasarkan gender.</p></div>
+          </div>
+          <div class="gender-area">
+            <div class="donut" id="donut"><div><b id="genderTotal">100</b><small>orang</small></div></div>
+            <div class="legend" id="genderLegend"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" id="decisions">
+        <div class="panel-head">
+          <div><h2>Analisis & Keputusan</h2><p>Interpretasi deskriptif yang dapat digunakan sebagai dasar tindakan.</p></div>
+        </div>
+        <div class="decision-grid" id="decisionGrid"></div>
+      </section>
+
+      <section class="panel" id="data">
+        <div class="panel-head">
+          <div><h2>Preview Data</h2><p>8 baris pertama dari dataset.</p></div>
+        </div>
+        <div class="table-wrap">
+          <table><thead id="previewHead"></thead><tbody id="previewBody"></tbody></table>
+        </div>
+      </section>
+
+      <footer>Dashboard Statistik Deskriptif · Flask + HTML + CSS + JavaScript · Data Latihan 1</footer>
+    </main>
+  </div>
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
